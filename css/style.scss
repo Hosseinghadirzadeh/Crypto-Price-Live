@@ -25,15 +25,55 @@ main {
         left: 0;
         transition: all 0.8s;
         transform-origin: Right;
-       perspective: 800px;
-       transform:translateY(-10px) perspective(1000px);
+        perspective: 800px;
+        transform: translateY(-10px) perspective(1000px);
+        background-image: url(../img/btc-background.jpg);
+        background-size: cover;
+        background-position: -50px 20px;
         &:hover {
-            transform:perspective(1000px) rotateY(6deg);
+            transform: perspective(1000px) rotateY(6deg);
+        }
+        display: flex;
+        flex-wrap: wrap;
+        align-content: space-between;
+        padding: 50px 20px;
+        > div {
+            border-radius: 20px;
+            width: 100%;
+            color: white;
+            font-family: "Roboto", sans-serif;
+            padding: 5px;
+        }
+        > .date {
+            .day {
+                font-size: 30px;
+                padding-left: 5px;
+            }
+            .month {
+                font-size: 20px;
+            }
+        }
+        > .price {
+            background-color: rgba(255, 255, 255, 0);
+            backdrop-filter: blur(4px);
+
+            > .name {
+                font-size: 30px;
+                padding-left: 10px;
+            }
+            > .priceD {
+                font-size: 50px;
+            }
         }
     }
     > .info {
         border: 1px solid red;
         height: 100%;
         background-color: #212730;
+        border-radius: 20px;
     }
+}
+
+.box{
+    
 }

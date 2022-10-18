@@ -44,6 +44,17 @@ main {
           perspective: 800px;
   -webkit-transform: translateY(-10px) perspective(1000px);
           transform: translateY(-10px) perspective(1000px);
+  background-image: url(../img/btc-background.jpg);
+  background-size: cover;
+  background-position: -50px 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -ms-flex-line-pack: justify;
+      align-content: space-between;
+  padding: 50px 20px;
 }
 
 .con > .show:hover {
@@ -51,9 +62,42 @@ main {
           transform: perspective(1000px) rotateY(6deg);
 }
 
+.con > .show > div {
+  border-radius: 20px;
+  width: 100%;
+  color: white;
+  font-family: "Roboto", sans-serif;
+  padding: 5px;
+}
+
+.con > .show > .date .day {
+  font-size: 30px;
+  padding-left: 5px;
+}
+
+.con > .show > .date .month {
+  font-size: 20px;
+}
+
+.con > .show > .price {
+  background-color: rgba(255, 255, 255, 0);
+  -webkit-backdrop-filter: blur(4px);
+          backdrop-filter: blur(4px);
+}
+
+.con > .show > .price > .name {
+  font-size: 30px;
+  padding-left: 10px;
+}
+
+.con > .show > .price > .priceD {
+  font-size: 50px;
+}
+
 .con > .info {
   border: 1px solid red;
   height: 100%;
   background-color: #212730;
+  border-radius: 20px;
 }
 /*# sourceMappingURL=style.css.map */
