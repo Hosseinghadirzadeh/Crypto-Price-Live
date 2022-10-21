@@ -1,14 +1,23 @@
-class shortStory{
-    constructor(name,price) {
+class shortStory {
+    constructor(name, price, img) {
         this.name = name;
-        this.price = price;
+        this.price = parseInt(price);
+        this.img = img
     }
-     Inserter(params) {
-         let div = document.createElement('div');
-         
-         div.innerHTML = `
-         
+    Inserter() {
+        let div = document.createElement('div');
+
+        div.innerHTML = `
+                  <div class="box">
+                    <figure><img src="${this.img}" alt=""></figure>
+                    <div>
+                        <p id="currencyName">${this.name}</p>
+                        <p id="currencyPrice">${this.price}$</p>
+                    </div>
+                </div>
          `
+
+        document.getElementById('wrap').appendChild(div);
     }
 }
 const options = {
@@ -19,6 +28,7 @@ const options = {
     }
 };
 let oldPrice = 0;
+let array;
 setInterval(() => {
     fetch('https://coinranking1.p.rapidapi.com/coins?referenceCurrencyUuid=yhjMzLPhuIDl&timePeriod=24h&tiers%5B0%5D=1&orderBy=marketCap&orderDirection=desc&limit=50&offset=0', options)
         .then(response => response.json())
@@ -36,11 +46,27 @@ setInterval(() => {
             }
             oldPrice = price
             document.getElementsByClassName('priceD')[0].innerHTML = price + ' $';
-            // console.log(response)
+            array = response;
+            // console.log(response);
 
         })
         .catch(err => console.error(err));
 }, 1000)
+
+setTimeout(() => {
+        array.data.coins.map(item => {
+            let obj = new shortStory(item.name, item.price, item.iconUrl);
+            obj.Inserter();
+        })
+    }, 1800);
+
+
+let currencyPrice = document.querySelectorAll('#currencyPrice');
+let currencyName = document.querySelectorAll('#currencyName');
+
+for (let i = 0; i < array.length; i++){
+    currencyPrice[i].innerHTML = array.data.coins[i].price;
+}
 
 let date = new Date();
 let day;
