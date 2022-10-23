@@ -30,7 +30,6 @@ const options = {
 let oldPrice = 0;
 let array;
 let currencyPrice;
-let currencyName = document.querySelectorAll('#currencyName');
 
 setInterval(() => {
     fetch('https://coinranking1.p.rapidapi.com/coins?referenceCurrencyUuid=yhjMzLPhuIDl&timePeriod=24h&tiers%5B0%5D=1&orderBy=marketCap&orderDirection=desc&limit=50&offset=0', options)
@@ -63,12 +62,15 @@ setTimeout(() => {
     })
     currencyPrice = document.querySelectorAll('#currencyPrice');
     // console.log(currencyPrice[0].innerHTML = array.data.coins[1].price)
-    //PROBLEMMMMMMMMMMMMMMMMMMMMMMMMMMM
     setInterval(() => {
-        for (i = 0; i < array.length; i++) {
-            currencyPrice[i].innerHTML = array.data.coins[i].price;
+        console.log(currencyPrice.length)
+        let i = 0;
+        while (i < currencyPrice.length) {
+            currencyPrice[i].innerHTML = array.data.coins[i].price
+            i++;
         }
-    }, 0);
+},1000)
+
 }, 1800)
 
 // update(currencyPrice);
