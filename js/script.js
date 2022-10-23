@@ -29,6 +29,9 @@ const options = {
 };
 let oldPrice = 0;
 let array;
+let currencyPrice;
+let currencyName = document.querySelectorAll('#currencyName');
+
 setInterval(() => {
     fetch('https://coinranking1.p.rapidapi.com/coins?referenceCurrencyUuid=yhjMzLPhuIDl&timePeriod=24h&tiers%5B0%5D=1&orderBy=marketCap&orderDirection=desc&limit=50&offset=0', options)
         .then(response => response.json())
@@ -49,24 +52,29 @@ setInterval(() => {
             array = response;
             // console.log(response);
 
+
         })
         .catch(err => console.error(err));
 }, 1000)
-
 setTimeout(() => {
-        array.data.coins.map(item => {
-            let obj = new shortStory(item.name, item.price, item.iconUrl);
-            obj.Inserter();
-        })
-    }, 1800);
+    array.data.coins.map(item => {
+        let obj = new shortStory(item.name, item.price, item.iconUrl);
+        obj.Inserter();
+    })
+    currencyPrice = document.querySelectorAll('#currencyPrice');
+    // console.log(currencyPrice[0].innerHTML = array.data.coins[1].price)
+    //PROBLEMMMMMMMMMMMMMMMMMMMMMMMMMMM
+    setInterval(() => {
+        for (i = 0; i < array.length; i++) {
+            currencyPrice[i].innerHTML = array.data.coins[i].price;
+        }
+    }, 0);
+}, 1800)
 
+// update(currencyPrice);
+// function update(currencyPrice) {
 
-let currencyPrice = document.querySelectorAll('#currencyPrice');
-let currencyName = document.querySelectorAll('#currencyName');
-
-for (let i = 0; i < array.length; i++){
-    currencyPrice[i].innerHTML = array.data.coins[i].price;
-}
+// }
 
 let date = new Date();
 let day;
