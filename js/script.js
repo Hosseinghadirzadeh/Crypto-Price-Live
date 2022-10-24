@@ -20,6 +20,7 @@ class shortStory {
         document.getElementById('wrap').appendChild(div);
     }
 }
+
 const options = {
     method: 'GET',
     headers: {
@@ -51,7 +52,6 @@ setInterval(() => {
             oldPrice = price
             document.getElementsByClassName('priceD')[0].innerHTML = price + ' $';
             array = response;
-            // console.log(response);
 
 
         })
@@ -65,7 +65,6 @@ setTimeout(() => {
         obj.Inserter();
     })
     currencyPrice = document.querySelectorAll('#currencyPrice');
-    // console.log(currencyPrice[0].innerHTML = array.data.coins[1].price)
     setInterval(() => {
         let i = 0;
         while (i < currencyPrice.length) {
